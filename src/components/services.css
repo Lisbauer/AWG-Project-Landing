@@ -1,0 +1,39 @@
+.srv-container{
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.srv-tittle{
+    -webkit-text-fill-color: #0803FA;
+    font-size: 45px;
+    margin-left: 50px;
+}
+.srv-section{
+    display: flex;
+}
+.srv-box{
+    border: solid 1px #0803FA;
+    border-radius: 28px;
+    width: 420px;
+    height: 470px; 
+    margin: 30px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+.srv-box:hover{
+    transition: 0.4s;
+    box-shadow: 6px 4px 4px 5px rgba(161, 161, 161, 0.237);
+}
+.srv-box p{
+    font-size: 22px;
+    margin: 25px;
+}
+.svc-subttl{
+    -webkit-text-fill-color: #0803FA;
+    font-size: 23px;
+    margin: 23px;
+    margin-top: 40px;
+}
+.stg-lt{
+    font-weight: 600;
+}

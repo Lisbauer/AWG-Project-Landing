@@ -1,0 +1,27 @@
+.abt-container{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    margin-top: 90px;
+}
+.about-text2{
+    -webkit-text-stroke: 1px #000000;
+    -webkit-text-fill-color: transparent; 
+    text-align: center;
+    font-size: 50px;
+}
+.awg{
+    -webkit-text-fill-color: #0803FA;
+}
+.about-text3{
+    font-size: 22px;
+}
+.about-text4{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.megafono{
+    width: 400px
+}

@@ -1,0 +1,75 @@
+.contact-container{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Rubik', sans-serif;
+    padding-bottom: 50px;
+}
+.box-heading-title{
+    margin-left: 100px;
+    margin-top: 140px;
+}
+.heading-title{
+    -webkit-text-stroke: 1px #0803FA;
+    -webkit-text-fill-color: transparent; 
+    background-color: #f4f4f400;
+    font-size: 52px;
+    text-align: left;
+
+}
+.highlight-h1{
+    -webkit-text-fill-color: #0803FA;
+    font-size: 65px; 
+}
+
+/*  H3  */
+.box-description-title{
+    margin-left: 100px;
+}
+.description-title{
+    font-weight: 400;
+    font-size: 22px;
+    text-align: left;
+}
+.hightlight-h3{
+    font-weight: 700;
+}
+/* SECTION 2 */
+.texfield-section{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+}
+.title-textfield-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 60px;
+}
+.textfield-container{
+    display: flex;
+    flex-direction: column;
+}
+.message-button{
+    width: 230px;
+    height: 45px;
+    background-color: #0803FA;
+    color: white;
+    border-radius: 14px;
+    border: solid black 1px;
+    font-family:  'Rubik', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+ }
+ .message-button:hover{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    box-shadow: inset 7px 3px 60px rgba(11, 10, 10, 0.528);
+ }
+ .btn-wp{
+    display: flex;
+    width: 430px;
+    justify-content: end;
+    padding-top: 30px;
+ }

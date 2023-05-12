@@ -1,0 +1,60 @@
+.App {
+    background-image: url(../../public/images/textfield-bg.png);
+    background-size:cover;
+    background-position: bottom;
+    padding-top: 60px;  
+}
+.header-container{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Rubik', sans-serif;
+}
+.logo{
+    width: 300px;
+}
+.nav-links {
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+.contact-link{
+  font-weight: bold;
+}
+.contact-button{
+    width: 260px;
+    height: 45px;
+    border-radius: 20px;
+    border: solid 1px rgb(151, 151, 151) ;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    
+}
+.whatsapp-btn-link{
+    text-decoration: none;
+}
+.contact-button p{
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    
+}
+.contact-button:hover{
+    transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+    box-shadow: inset 7px 3px 6px rgba(122, 122, 122, 0.528);
+  
+}
+.whatsapp-logo{
+    width: 40px;
+    margin-right: 39px;
+    padding-left: 5px;
+}
+.testing{
+    scroll-behavior: smooth;
+}
