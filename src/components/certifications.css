@@ -1,0 +1,54 @@
+.cert-container{
+    background-color: #9A9898;
+    font-family: 'Rubik', sans-serif;
+}
+.cert-section{
+ display: flex;
+ justify-content: center;
+}
+.cert-text{
+    -webkit-text-stroke: 1px #ffffff;
+    -webkit-text-fill-color: transparent; 
+    font-size: 48px;
+    padding: 40px;
+}
+.cert-box {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.certif-img-google,
+.certif-img-meta,
+.certif-img-amazon {
+    max-width: 400px;
+    object-fit: contain;
+    margin-right: 170px;
+    padding-bottom: 40px;
+}
+  
+.certif-img-amazon:last-child {
+    margin-right: 0;
+}
+.certif-img-meta{
+    width: 300px;
+}
+.footer-box{
+    background-color: #595959;  
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    
+}
+.footer-box h4{
+    color: white;
+    font-weight: 300;
+}
+.wpp-ctc{
+    display: flex;
+}
+
+.wpp-icon{
+    width: 40px;
+    object-fit: contain;
+}
+
