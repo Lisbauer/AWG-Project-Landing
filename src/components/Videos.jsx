@@ -1,24 +1,25 @@
 import React from 'react'
 import './videos.css'
 import YouTube from 'react-youtube';
-
+import { Link } from "react-scroll";
 
 const Videos = () => {
+ 
   return (
     <div>
       <section className='video-container'>
-        <h2>CONOCÉ <span className='mas-span'>MÁS</span></h2>
+        <h2 data-aos="fade-down">CONOCÉ <span className='mas-span'>MÁS</span></h2>
 
-        <div className='video-box'>
+        <div className='video-box' data-aos="fade-left">
         <YouTube videoId="_yqSbnbUsj4" />
-          <div className='text-box-right'>
+          <div className='text-box-right' >
             <h3>¿Cómo abrir una cuenta publicitaria en Amazon?</h3>
             <h4>¿Qué tipo de campañas se pueden gestionar desde ahí?</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque lectus lorem, id auctor lectus finibus ac. In hac habitasse platea dictumst...</p>
           </div>
         </div>
 
-        <div className='video-box'>
+        <div className='video-box' data-aos="fade-right">
           <div className='text-box-left'>
             <h3>¿Cómo dar de alta un producto?</h3>
             <h4> ¿Cuáles se pueden publicitar y cuáles no?</h4>
@@ -27,7 +28,7 @@ const Videos = () => {
           <YouTube videoId="_yqSbnbUsj4" />
         </div>
 
-        <div className='video-box'>
+        <div className='video-box' data-aos="fade-left">
         <YouTube videoId="_yqSbnbUsj4" />
           <div className='text-box-right'>
             <h3>¿Cómo generar ventas en la plataforma?</h3>
@@ -36,7 +37,7 @@ const Videos = () => {
           </div>
         </div>
 
-        <div className='video-box'>
+        <div className='video-box' data-aos="fade-right">
        
           <div className='text-box-left'>
             <h3>¿Cómo se usan los descuentos en las plataformas?</h3>
@@ -46,7 +47,7 @@ const Videos = () => {
           <YouTube videoId="_yqSbnbUsj4" />
         </div>
 
-        <div className='video-box'>
+        <div className='video-box' data-aos="fade-left">
         <YouTube videoId="_yqSbnbUsj4" />
           <div className='text-box-right'>
             <h3>¿Cuáles son los servicios de AWG Retail Media?</h3>
@@ -54,7 +55,7 @@ const Videos = () => {
           </div>
         </div>
 
-        <div className='video-box'>
+        <div className='video-box'data-aos="fade-right">
        
           <div className='text-box-left'>
             <h3>Glosario</h3>
@@ -62,8 +63,15 @@ const Videos = () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque lectus lorem, id auctor lectus finibus ac. In hac habitasse platea dictumst...</p>
           </div> 
           <YouTube videoId="_yqSbnbUsj4" />
-        </div>
+        </div>    
+        <div className="rocket-box">
+      <Link to="navbar" smooth={true} duration={500} spy={true} exact="true" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <img className="rocket" src="../images/rocket.png" alt="rocket" />
+      </Link>
+    </div>
       </section>
+
+
     </div>
   )
 }

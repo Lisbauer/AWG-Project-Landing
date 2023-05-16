@@ -4,6 +4,7 @@ import './aboutAwg.css'
 const AboutAwg = () => {
   return (
     <div className='abt-container'>
+      <div className='picabt-container' data-aos="fade-down">
         <section className='text-container'>
         <div className='text-box'>
             <h2 className='about-text2'><strong> SOBRE <span className='awg'>AWG</span></strong></h2>
@@ -17,6 +18,7 @@ const AboutAwg = () => {
         <section className='abt-img-container'>
         <img className="megafono" src="../images/about-awg.png" alt="megafono" />
         </section>
+      </div>
     </div>
   )
 }

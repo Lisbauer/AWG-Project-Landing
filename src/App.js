@@ -10,9 +10,11 @@ import Certifications from './components/Certifications';
 
 function App() {
   return (
-    <div> 
+    <div id='navbar'> 
     <div className="App">
+    <div >
     <Navbar/>
+    </div>
     <div id='contact'> 
     <Contact/>
     </div>

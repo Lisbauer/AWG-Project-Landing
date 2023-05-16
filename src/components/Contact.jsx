@@ -52,7 +52,7 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <section className="business-boost-section">
-        <div className="box-heading-title">
+        <div className="box-heading-title" >
           <h1 className="heading-title">
             CONTACTANOS PARA <br />{" "}
             <span className="highlight-h1">POTENCIAR</span>
@@ -82,37 +82,54 @@ const Contact = () => {
 
           <div className="textfield-container">
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Nombre y apellido"
               multiline
               maxRows={4}
             />
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Empresa"
               multiline
               maxRows={4}
             />
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Direccion de correo"
               multiline
               maxRows={4}
             />
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Sitio Web"
               multiline
               maxRows={4}
             />
-  <FormControl sx={{ width: "450px", marginBottom: "28px" }}>
+  <FormControl sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}>
               <InputLabel id="country-label">Pais</InputLabel>
               <SelectRoot
                 labelId="country-label"
+                id="demo-multiple-name"
                 value={selectedCountry}
                 onChange={(e) => handleCountrySelect(e.target.value)}
                 renderValue={(selected) => selected ? selected.label : ""}
@@ -139,7 +156,10 @@ const Contact = () => {
               </SelectRoot>
             </FormControl>
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Numero de teléfono"
               multiline
@@ -147,7 +167,10 @@ const Contact = () => {
             />
 
             <TextField
-              sx={{ width: "450px", marginBottom: "28px" }}
+              sx={{ width: "450px", marginBottom: "28px",
+              "@media (max-width: 480px)": {
+                width: "280px",
+              }, }}
               id="outlined-multiline-flexible"
               label="Servicio de interés"
               value={selectedService}
@@ -186,11 +209,11 @@ const Contact = () => {
 
           </div>
           <div className="btn-wp">
-            <img
+          <a className="whatsapp-btn-link" href="https://wa.me/+5491160510124" target="blank"> <img
               className="whatsapp-logo"
               src="../images/whatsapplogo.png"
               alt="wpplogo"
-            />
+            /> </a>
             <button className="message-button">
               <strong>Enviar mensaje</strong>
             </button>

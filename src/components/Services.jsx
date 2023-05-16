@@ -5,9 +5,10 @@ const Services = () => {
 
   return (
     <div className='srv-container'>
-        <div>
-            <h2 className='srv-tittle'>SERVICIOS</h2>
-            <section className='srv-section'>
+        <div className='box-s'>
+            <h2 className='srv-tittle' data-aos="fade-down">SERVICIOS</h2>
+            <section className='srv-section' data-aos="fade-up"
+     data-aos-anchor-placement="top-center">
 
                 <div className='srv-box'>
                     <h3 className='svc-subttl'>ABM de productos</h3>

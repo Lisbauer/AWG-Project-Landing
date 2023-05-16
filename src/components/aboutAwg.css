@@ -1,27 +1,68 @@
 .abt-container{
-    display: flex;
-    justify-content: space-around;
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    margin-top: 90px;
+    height: 930px;
+}
+.picabt-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 150px;
 }
 .about-text2{
     -webkit-text-stroke: 1px #000000;
     -webkit-text-fill-color: transparent; 
     text-align: center;
-    font-size: 50px;
+    font-size: 56px;
 }
 .awg{
     -webkit-text-fill-color: #0803FA;
 }
 .about-text3{
-    font-size: 22px;
+    font-size: 26px;
 }
 .about-text4{
     font-weight: 400;
-    font-size: 22px;
+    font-size: 26px;
+}
+.megafono{
+    width: 500px
 }
 
-.megafono{
-    width: 400px
+
+
+@media (max-width: 900px){
+    .picabt-container{
+        padding-top: 150px;
+    }
+    .text-box{
+        width: 400px;
+    }
+    .megafono{
+        width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+    .picabt-container{
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .text-box{
+        width: 300px;
+    }
+    .about-text2{
+        font-size: 46px;
+    }
+    .about-text3{
+        font-size: 22px;
+    }
+    .about-text4{
+        font-weight: 400;
+        font-size: 23px;
+
+    }
+    .megafono{
+        width: 300px
+    }
 }

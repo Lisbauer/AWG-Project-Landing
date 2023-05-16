@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
-import './fonts.css'
+import "./fonts.css";
 import { Link, animateScroll } from "react-scroll";
 
-const navbar = () => {
-
+const Navbar = () => {
   const scrollToTop = () => {
     animateScroll.scrollToTop();
   };
 
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuClick = () => {
+    setMenuOpen(!isMenuOpen);
+
+  };
+  
   return (
     <div className="nav-container">
       <div className="header-container">
         <img className="logo" src="../images/logo.png" alt="logo" />
-        <div>
+
+        <button
+          className={`burger-btn ${isMenuOpen ? "active" : ""}`}
+          onClick={handleMenuClick}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+
+        <div className={`box-links ${isMenuOpen ? "active" : ""}`}>
           <ul className="nav-links">
-          <li>
+            <li>
               <Link
                 to="contact"
                 smooth={true}
@@ -26,9 +42,8 @@ const navbar = () => {
                 Contacto
               </Link>
             </li>
-            
-           <li>
 
+            <li>
               <Link
                 to="about"
                 smooth={true}
@@ -40,7 +55,7 @@ const navbar = () => {
               </Link>
             </li>
 
-             <li>
+            <li>
               <Link
                 to="services"
                 smooth={true}
@@ -75,21 +90,27 @@ const navbar = () => {
                 Blog
               </Link>
             </li>
-
           </ul>
-        </div>
-        <a className="whatsapp-btn-link" href="https://wa.me/+5491160510124" target="blank">  <button className="contact-button">
-          <img
-            className="whatsapp-logo"
-            src="../images/whatsapplogo.png"
-            alt="logo"
-          />
-          <p> iCONTACTANOS!</p>
           
-        </button> </a>
+        </div>
+
+        <a
+          className="whatsapp-btn-link"
+          href="https://wa.me/+5491160510124"
+          target="_blank"
+        >
+          <button className="contact-button">
+            <img
+              className="whatsapp-logo"
+              src="../images/whatsapplogo.png"
+              alt="logo"
+            />
+            <p> iCONTACTANOS!</p>
+          </button>{" "}
+        </a>
       </div>
     </div>
   );
 };
 
-export default navbar;
+export default Navbar;

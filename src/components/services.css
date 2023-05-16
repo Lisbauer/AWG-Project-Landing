@@ -2,6 +2,8 @@
     font-family: 'Rubik', sans-serif;
     display: flex;
     justify-content: center;
+    height: 800px;
+    padding-bottom: 130px;
 }
 .srv-tittle{
     -webkit-text-fill-color: #0803FA;
@@ -36,4 +38,68 @@
 }
 .stg-lt{
     font-weight: 600;
+}
+@media (max-width: 1400px) {
+    .srv-container{
+        height: 700px; 
+    }
+    .srv-box{
+        width: 370px;
+        height: 480px;
+        margin: 10px;
+    }
+}
+@media (max-width: 1200px) {
+    .srv-container{
+        height: 700px; 
+    }
+    .srv-box{
+        width: 270px;
+        height: 600px;
+        margin: 10px;
+    }
+}
+@media (max-width: 900px) {
+    .srv-container{
+        height: 1700px;
+        height: 1900 ;  
+        text-align: center;
+    }
+    .srv-tittle{
+        font-size: 57px;
+    }
+    .srv-section{
+        flex-direction: column;
+        text-align: center;
+    }
+    .srv-box{
+        width: 480px;
+        height: 440px;
+    }
+    .svc-subttl{
+        font-size: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .srv-container{
+        height: 1500px;
+    }
+    .srv-tittle{
+        font-size: 36px;
+        margin-left: 0px;
+    }
+    .srv-section{
+        flex-direction: column;
+        text-align: center;
+    }
+    .srv-box{
+        width: 300px;
+        height: 420px;
+    }
+    .svc-subttl{
+        font-size: 25px;
+    }
+    .srv-box p{
+        font-size: 17px;
+    }
 }
