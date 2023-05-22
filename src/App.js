@@ -6,6 +6,7 @@ import AboutAwg from './components/AboutAwg';
 import Services from './components/Services';
 import Videos from './components/Videos'
 import Certifications from './components/Certifications';
+import WhatsappToTopIcons from './components/WhatsappToTopIcons';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div >
     <Navbar/>
     </div>
+    <WhatsappToTopIcons/>
     <div id='contact'> 
     <Contact/>
     </div>
@@ -30,6 +32,7 @@ function App() {
     </div>
     <Certifications/>
     </div>
+
   );
 }
 

@@ -1,0 +1,32 @@
+.icons-box{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+.rocket{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+.whatsapp-icon{
+    width: 70px;
+    height: 70px;
+}
+@media (max-width: 550px) {
+    .rocket{
+        width: 45px;
+        height: 45px;
+        margin-bottom: 10px;
+    }
+    .whatsapp-icon{
+        width: 45px;
+        height: 45px;
+    }
+    .icons-box{
+        bottom: 20px;
+        right: 6px;
+    }
+}
