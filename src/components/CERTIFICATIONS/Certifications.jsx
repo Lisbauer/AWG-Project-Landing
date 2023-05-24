@@ -2,8 +2,6 @@ import React from "react";
 import "./certifications.css";
 
 const Certifications = () => {
-
-  
   return (
     <div className="cert-container">
       <h2 className="cert-text">CERTIFICACIONES</h2>

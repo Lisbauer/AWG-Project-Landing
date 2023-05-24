@@ -1,5 +1,6 @@
 import React from 'react'
 import './WhatsappToTopIcons.css'
+import '../CONTACT/contact.css'
 import { Link } from 'react-scroll'
 
 const WhatsappToTopIcons = () => {
@@ -19,5 +20,4 @@ const WhatsappToTopIcons = () => {
     </div>
   )
 }
-
 export default WhatsappToTopIcons

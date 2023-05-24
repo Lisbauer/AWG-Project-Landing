@@ -5,20 +5,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import "./navbar.css";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import ListItemText from "@mui/material/ListItemText";
+import Autocomplete from "@mui/material/Autocomplete";
+import "../NAVBAR/navbar.css";
 import { styled } from "@mui/material/styles";
 import emailjs from "emailjs-com";
-import countries from 'i18n-iso-countries';
-import spanish from 'i18n-iso-countries/langs/es.json';
+import countries from "i18n-iso-countries";
+import spanish from "i18n-iso-countries/langs/es.json";
 
 countries.registerLocale(spanish);
 
-
-const SelectRoot = styled(Select)({
+const SelectRoot = styled(Autocomplete)({
   "& .MuiInput-underline:before, & .MuiInput-underline:after": {
     display: "none",
   },
@@ -40,13 +36,21 @@ const Contact = () => {
   const [selectedSitioWeb, setSelectedSitioWeb] = useState("");
   const [selectedTelefono, setSelectedTelefono] = useState("");
   const [countryAnchorEl, setCountryAnchorEl] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
+  const [showValidationError, setShowValidationError] = useState(false);
 
-
-  const countryOptions = Object.entries(countries.getNames('es')).map(([code, name]) => ({
-    value: code,
-    label: name
-  }));
-
+  const countryOptions = Object.entries(countries.getNames("es")).map(
+    ([code, name]) => ({
+      value: code,
+      label: name,
+    })
+  );
+  const serviceOptions = [
+    { label: "ABM de productos", value: "ABM de productos" },
+    { label: "Retail Readiness", value: "Retail Readiness" },
+    { label: "Gestión de cuentas publicitarias", value: "Gestión de cuentas publicitarias" },
+  ];
+  
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -58,29 +62,41 @@ const Contact = () => {
   const handleCloseCountryMenu = () => {
     setCountryAnchorEl(null);
   };
-  
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
 
-  const handleCountrySelect = (country) => {
+  const handleCountrySelect = (event, country) => {
     setSelectedCountry(country);
     handleCloseCountryMenu();
   };
-  
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
     handleCloseMenu();
   };
 
-  const sortedCountryOptions = countryOptions.slice().sort((a, b) => a.label.localeCompare(b.label));
-
+  const sortedCountryOptions = countryOptions
+    .slice()
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   const sendForm = (event) => {
     event.preventDefault();
 
+    if (
+      !selectedNombreApellido ||
+      !selectedEmpresa ||
+      !selectedCorreo ||
+      !selectedSitioWeb ||
+      !selectedCountry ||
+      !selectedTelefono ||
+      !selectedService
+    ) {
+      setShowValidationError(true);
+      setShowMessage(false);
+      return;
+    }
     const templateParams = {
       nombreApellido: selectedNombreApellido,
       empresa: selectedEmpresa,
@@ -88,17 +104,28 @@ const Contact = () => {
       sitioWeb: selectedSitioWeb,
       pais: selectedCountry.label,
       telefono: selectedTelefono,
-      servicio: selectedService,
+      servicio: selectedService.label,
     };
 
-    // Envía el formulario a través de EmailJS
     emailjs
       .send("service_wnjxtg7", "template_xx62385", templateParams)
       .then((response) => {
         console.log("Correo enviado con éxito", response.status, response.text);
+        setShowMessage(true);
+        setShowValidationError(false);
       })
       .catch((error) => {
         console.error("Error al enviar el correo", error);
+      })
+      .finally(() => {
+        setSelectedNombreApellido("");
+        setSelectedEmpresa("");
+        setSelectedCorreo("");
+        setSelectedSitioWeb("");
+        setSelectedCountry(null);
+        setSelectedTelefono("");
+        setSelectedService(null);
+        setShowValidationError(false);
       });
   };
 
@@ -131,10 +158,13 @@ const Contact = () => {
 
       <section className="texfield-section">
         <div className="title-textfield-container">
-          <h3 className="input-title">Completá tus datos aqui</h3>
+          <h3 className="input-title">Completá tus datos aquí</h3>
 
           <div className="textfield-container">
             <TextField
+              style={{
+                border: showValidationError && !selectedNombreApellido ? "1px solid red" : "none",
+              }}
               sx={{
                 width: "450px",
                 marginBottom: "28px",
@@ -152,6 +182,9 @@ const Contact = () => {
               maxRows={4}
             />
             <TextField
+              style={{
+                border: showValidationError && !selectedEmpresa ? "1px solid red" : "none",
+              }}
               sx={{
                 width: "450px",
                 marginBottom: "28px",
@@ -168,6 +201,9 @@ const Contact = () => {
               maxRows={4}
             />
             <TextField
+              style={{
+                border: showValidationError && !selectedCorreo ? "1px solid red" : "none",
+              }}
               sx={{
                 width: "450px",
                 marginBottom: "28px",
@@ -179,11 +215,14 @@ const Contact = () => {
               value={selectedCorreo}
               onChange={(event) => setSelectedCorreo(event.target.value)}
               id="outlined-multiline-flexible"
-              label="Direccion de correo"
+              label="Dirección de correo"
               multiline
               maxRows={4}
             />
             <TextField
+              style={{
+                border: showValidationError && !selectedSitioWeb ? "1px solid red" : "none",
+              }}
               sx={{
                 width: "450px",
                 marginBottom: "28px",
@@ -199,44 +238,66 @@ const Contact = () => {
               multiline
               maxRows={4}
             />
-<TextField
-  sx={{
-    width: "450px",
-    marginBottom: "28px",
-    "@media (max-width: 480px)": {
-      width: "280px",
-    },
-  }}
-  label="Pais"
-  value={selectedCountry?.label || ""}
-  onClick={handleOpenCountryMenu}
-  InputLabelProps={{
-    shrink: selectedCountry ? true : undefined,
-  }}
-  InputProps={{
-    endAdornment: (
-      <IconButton size="small" onClick={handleOpenCountryMenu}>
-        <ArrowDropDownIcon />
-      </IconButton>
-    ),
-  }}
-/>
-<Menu
-  anchorEl={countryAnchorEl}
-  open={Boolean(countryAnchorEl)}
-  onClose={handleCloseCountryMenu}
->
-  {sortedCountryOptions.map((option) => (
-    <MenuItem
-  key={option.value}
-  value={option}
-  onClick={() => handleCountrySelect(option)}
->
-      {option.label}
-    </MenuItem>
-  ))}
-</Menu>
+            <Autocomplete
+              style={{
+                border: showValidationError && !selectedCountry ? "1px solid red" : "none",
+                marginBottom: "28px",
+                position: "relative",
+                
+              }}
+              options={sortedCountryOptions}
+              getOptionLabel={(option) => option.label}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="País"
+                  onClick={handleOpenCountryMenu}
+                  InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                      <IconButton
+                        size="small"
+                        onClick={handleOpenCountryMenu}
+                      >
+                        <ArrowDropDownIcon />
+                      </IconButton>
+                    ),
+                    sx: {
+                      "& .MuiSvgIcon-root": {
+                        right: "8px",
+                        left: "auto",
+                        pointerEvents: "none",
+                        position: "absolute",
+                      },               
+                      "@media (max-width: 480px)": {
+                      width: "280px",
+                },
+                    },
+                  }}
+                />
+              )}
+              value={selectedCountry}
+              onChange={handleCountrySelect}
+            />
+            <Menu
+              anchorEl={countryAnchorEl}
+              open={Boolean(countryAnchorEl)}
+              onClose={handleCloseCountryMenu}
+            >
+              {sortedCountryOptions.map((option) => (
+                <MenuItem
+                  key={option.value}
+                  value={option}
+                  onClick={(event) => handleCountrySelect(event, option)}
+                >
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Menu>
             <TextField
+              style={{
+                border: showValidationError && !selectedTelefono ? "1px solid red" : "none",
+              }}
               sx={{
                 width: "450px",
                 marginBottom: "28px",
@@ -248,56 +309,66 @@ const Contact = () => {
               value={selectedTelefono}
               onChange={(event) => setSelectedTelefono(event.target.value)}
               id="outlined-multiline-flexible"
-              label="Numero de teléfono"
+              label="Número de teléfono"
               multiline
               maxRows={4}
             />
 
-            <TextField
-              sx={{
-                width: "450px",
-                marginBottom: "28px",
-                "@media (max-width: 480px)": {
-                  width: "280px",
-                },
-              }}
-              id="outlined-multiline-flexible"
-              label="Servicio de interés"
-              value={selectedService || ""}
-              onChange={(e) => setSelectedService(e.target.value)}
-              onClick={handleOpenMenu}
-              InputLabelProps={{
-                shrink: selectedService ? true : undefined,
-              }}
-              InputProps={{
-                endAdornment: (
-                  <IconButton size="small" onClick={handleOpenMenu}>
-                    <ArrowDropDownIcon />
-                  </IconButton>
-                ),
-              }}
-            />
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleCloseMenu}
-            >
-              <MenuItem onClick={() => handleServiceSelect("ABM de productos")}>
-                ABM de productos
-              </MenuItem>
-              <MenuItem onClick={() => handleServiceSelect("Retail Readiness")}>
-                Retail Readiness
-              </MenuItem>
-              <MenuItem
-                onClick={() =>
-                  handleServiceSelect("Gestión de cuentas publicitarias")
-                }
-              >
-                Gestión de cuentas publicitarias
-              </MenuItem>
-            </Menu>
-            
+<Autocomplete
+  style={{
+    border: showValidationError && !selectedService ? "1px solid red" : "none",
+    marginBottom: "28px",
+    position: "relative",
+
+  }}
+  options={serviceOptions}
+  getOptionLabel={(option) => option.label}
+  renderInput={(params) => (
+    <TextField
+      {...params}
+      label="Servicio de interés"
+      onClick={handleOpenMenu}
+      InputProps={{
+        ...params.InputProps,
+        endAdornment: (
+          <IconButton size="small" onClick={handleOpenMenu}>
+            <ArrowDropDownIcon />
+          </IconButton>
+        ),
+        sx: {
+          "& .MuiSvgIcon-root": {
+            right: "8px",
+            left: "auto",
+            pointerEvents: "none",
+            position: "absolute",
+          },   "@media (max-width: 480px)": {
+      width: "280px",
+    },
+        },
+      }}
+    />
+  )}
+  value={selectedService}
+  onChange={(event, value) => setSelectedService(value)}
+/>
+<Menu
+  anchorEl={anchorEl}
+  open={Boolean(anchorEl)}
+  onClose={handleCloseMenu}
+>
+  <MenuItem onClick={() => handleServiceSelect("ABM de productos")}>
+    ABM de productos
+  </MenuItem>
+  <MenuItem onClick={() => handleServiceSelect("Retail Readiness")}>
+    Retail Readiness
+  </MenuItem>
+  <MenuItem onClick={() => handleServiceSelect("Gestión de cuentas publicitarias")}>
+    Gestión de cuentas publicitarias
+  </MenuItem>
+</Menu>
+
           </div>
+
           <div className="btn-wp">
             <a
               className="whatsapp-btn-link"
@@ -311,9 +382,18 @@ const Contact = () => {
                 alt="wpplogo"
               />{" "}
             </a>
+
             <button className="message-button" onClick={sendForm}>
               <strong>Enviar mensaje</strong>
             </button>
+          </div>
+          <div className="btn-p">
+            {showValidationError && (
+              <p className="error-p">Complete todos los campos por favor</p>
+            )}
+            {showMessage && (
+              <p className="success-p">En breve lo estaremos contactando</p>
+            )}
           </div>
         </div>
       </section>
